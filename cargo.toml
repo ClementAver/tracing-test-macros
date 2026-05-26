@@ -22,6 +22,25 @@ default-features = false
 features = ["proc-macro"]
 
 [dependencies.tokio]
-version = "1.52"
+version = "1.5"
 default-features = false
 features = ["net", "time", "macros", "rt", "rt-multi-thread", "signal"]
+
+[dev-dependencies.tracing]
+version = "0.1"
+default-features = false
+features = ["std"]
+
+
+[dev-dependencies.tracing-subscriber]
+version = "0.3"
+default-features = true
+features = ["env-filter"]
+
+[dev-dependencies.salvo]
+version = "0.93"
+default-features = false
+features = [
+    "server", "http1", "rustls", "ring", "proxy", "logging", "oapi", "serve-static", "catch-panic", "cors",
+    "size-limiter", "timeout", "trailing-slash", "caching-headers", "server-handle", "affix-state",
+]
