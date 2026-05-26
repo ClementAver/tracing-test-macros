@@ -1,3 +1,5 @@
+[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![crates.io Version](https://img.shields.io/crates/v/tracing-test-macros.svg)](https://crates.io/crates/tracing-test-macros) [![Documentation](https://docs.rs/tracing-test-macros/badge.svg)](https://docs.rs/tracing-test-macros)
+
 # test_macros
 
 Replacement macros for `#[test]` and `#[tokio::test]` initializating the tracing subscriber with `TRACE` level.
