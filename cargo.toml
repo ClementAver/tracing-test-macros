@@ -1,7 +1,16 @@
 [package]
-name = "test_macros"
+name = "tracing-test-macros"
 version = "0.1.0"
 edition = "2024"
+authors = ["Clément Aver <clement.aver@yahoo.fr>"]
+categories = ["development-tools::testing"]
+description = "Test macros automating tracing subscriber initialization."
+keywords = ["tokio", "test", "tracing", "tracing-subscriber"]
+license = "MIT"
+repository = "https://github.com/ClementAver/tracing-test-macros.git"
+include = [
+    "Cargo.toml", "src", "tests", "LICENSE", "README.md"
+]
 
 [lib]
 proc-macro = true
@@ -24,32 +33,14 @@ features = ["proc-macro"]
 [dependencies.tokio]
 version = "1.5"
 default-features = false
-features = ["net", "time", "macros", "rt", "rt-multi-thread", "signal"]
+features = ["net", "time", "macros", "rt", "rt-multi-thread"]
 
 [dev-dependencies.tracing]
 version = "0.1"
 default-features = false
 features = ["std"]
 
-
 [dev-dependencies.tracing-subscriber]
 version = "0.3"
 default-features = true
 features = ["env-filter"]
-
-[dev-dependencies.salvo]
-version = "0.93"
-default-features = false
-features = [
-    "server", "http1", "rustls", "ring", "proxy", "logging", "oapi", "serve-static", "catch-panic", "cors",
-    "size-limiter", "timeout", "trailing-slash", "caching-headers", "server-handle", "affix-state",
-]
-
-[dependencies.rust_errors]
-git = "ssh://git@git.rc-prod.com/raccourci/Tools/rust_errors.git"
-branch = "main"
-default-features = false
-features = []
-
-[dependencies]
-backtrace = "0.3.76"
