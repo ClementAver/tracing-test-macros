@@ -3,7 +3,7 @@ extern crate proc_macro;
 use proc_macro::TokenStream;
 use proc_macro2::TokenStream as Tokens;
 use quote::quote;
-use syn::{ItemFn, parse_macro_input};
+use syn::{ItemFn, parse_macro_input, Signature};
 
 #[proc_macro_attribute]
 pub fn test(attr: TokenStream, item: TokenStream) -> TokenStream {
@@ -31,9 +31,21 @@ fn try_test(attr: TokenStream, input: ItemFn, is_tokio: bool) -> syn::Result<Tok
     let ItemFn {
         attrs: _attrs,
         vis,
-        sig,
+        sig ,
         block,
     } = input;
+
+    if is_tokio {
+        if sig.asyncness.is_none() {
+            let msg = "the `async` keyword is missing from the function declaration";
+            return Err(syn::Error::new_spanned(sig.fn_token, msg));
+        }
+    } else if sig.asyncness.is_some() {
+            let msg = "async functions cannot be used for tests";
+            return Err(syn::Error::new_spanned(sig.fn_token, msg));
+    }
+
+    let sig = Signature { asyncness: None, ..sig};
 
     let init_tracing = quote! {
         crate::INIT.call_once(|| tracing_subscriber::fmt()

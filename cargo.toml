@@ -44,3 +44,12 @@ features = [
     "server", "http1", "rustls", "ring", "proxy", "logging", "oapi", "serve-static", "catch-panic", "cors",
     "size-limiter", "timeout", "trailing-slash", "caching-headers", "server-handle", "affix-state",
 ]
+
+[dependencies.rust_errors]
+git = "ssh://git@git.rc-prod.com/raccourci/Tools/rust_errors.git"
+branch = "main"
+default-features = false
+features = []
+
+[dependencies]
+backtrace = "0.3.76"
