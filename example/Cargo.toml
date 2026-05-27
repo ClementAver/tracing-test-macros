@@ -1,0 +1,26 @@
+[package]
+name = "example"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dev-dependencies.tracing-test-macros]
+path = "../crates/lib"
+
+[dev-dependencies.tokio]
+version = "1.52"
+default-features = true
+features = ["full"]
+
+[dev-dependencies.tracing]
+version = "0.1"
+default-features = true
+features = []
+
+[dev-dependencies.tracing-subscriber]
+version = "0.3"
+default-features = true
+features = ["ansi"]
+
+[dependencies]
+log = "0.4.30"

@@ -1,0 +1,28 @@
+[package]
+name = "tracing-test-macros"
+version = "0.1.0"
+edition = "2024"
+authors = ["Clément Aver <clement.aver@yahoo.fr>"]
+categories = ["development-tools::testing"]
+description = "Test macros automating tracing subscriber initialization."
+keywords = ["tokio", "test", "tracing", "tracing-subscriber"]
+license = "MIT"
+repository = "https://github.com/ClementAver/tracing-test-macros.git"
+
+[dependencies]
+tracing-test-macros-macros = { path = "../macros", version = "0.1.0" }
+
+[dependencies.tokio]
+version = "1.52"
+default-features = false
+features = ["macros", "rt", "rt-multi-thread"]
+
+[dependencies.tracing]
+version = "0.1"
+default-features = false
+features = ["std"]
+
+[dependencies.tracing-subscriber]
+version = "0.3"
+default-features = false
+features = ["std", "fmt", "env-filter"]
