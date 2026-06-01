@@ -10,7 +10,7 @@ license = "MIT"
 repository = "https://github.com/ClementAver/tracing-test-macros.git"
 
 [dependencies.tracing-test-macros-macros]
-versions = "0.2.0"
+version = "0.2.0"
 path = "../macros"
 default-features = false
 features = []
